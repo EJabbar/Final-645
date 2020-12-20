@@ -61,3 +61,4 @@
   sh test_dota.sh
   
   ```
+4- Results will be saved in "./examplesplit/results" directory.
