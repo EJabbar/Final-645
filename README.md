@@ -1,5 +1,42 @@
 # Final-645
 
+## Structure
+  ```
+.
+├── Final-645
+│   ├── README.md
+│   ├── backup
+│   ├── cfg
+│   │   ├── dota.data
+│   │   └── yolo-dota.cfg
+│   ├── data
+│   │   ├── dota.names
+│   │   └── labels
+│   │       ├── 100_0.png
+│   │       ├── ...
+│   │       └── make_labels.py
+│   ├── data_transform
+│   │   ├── YOLO_Transform.py
+│   │   ├── dota_utils.py
+│   │   └── imagetrans.py
+│   ├── examplesplit
+│   │   ├── images
+│   │   │   └── sample-1.png
+│   │   ├── labels
+│   │   │   └── sample-1.txt
+│   │   ├── results
+│   │   │   └── result_test-1.png
+│   │   ├── test.txt
+│   │   ├── tests
+│   │   │   └── test-1.png
+│   │   └── train.txt
+│   ├── test_dota.sh
+│   └── train_dota.sh
+├── darknet
+    ├── ...
+
+  ```
+
 ## Train
 1- Download the DOTA dataset.
 
