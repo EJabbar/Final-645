@@ -1,0 +1,5 @@
+classes=15
+train=/Users/emadjabbar/Desktop/henry-final/DOTA_YOLOv2/examplesplit/train.txt
+valid=/Users/emadjabbar/Desktop/henry-final/DOTA_YOLOv2/examplesplit/test.txt
+names=data/dota.names
+backup=/Users/emadjabbar/Desktop/henry-final/darknet/backup
