@@ -1,7 +1,7 @@
 # Final-645
 
 ## Train
-1- download the DOTA dataset.
+1- Download the DOTA dataset.
 
 2- Use the DOTA_devkit/ImgSplit.py to split the images and labels. (image of size 1024*1024)
   ```
@@ -42,6 +42,22 @@
 
   ```
   wget https://pjreddie.com/media/files/darknet19_448.conv.23
-  sh train-dota.sh 
+  sh train_dota.sh 
+  
+  ```
+  
+ 
+## Test
+
+1- Download the trained weights (or use the weights that learned in the training phase). Put the file in the "./backup" directroy.
+
+2- Put all the test images in the "./examplesplit/tests" directory. (max size of images: 1024*1024)
+
+3- Run the test script.
+
+
+  ```
+  wget https://pjreddie.com/media/files/darknet19_448.conv.23
+  sh test_dota.sh
   
   ```
