@@ -1,6 +1,39 @@
 # Final-645
 
 ## Structure
+
+1- clone darknet, DOTA_devkit, and this repository in a directory.
+  ```
+  !git clone https://github.com/EJabbar/Final-645.git
+  !git clone https://github.com/pjreddie/darknet.git
+  !git clone https://github.com/CAPTAIN-WHU/DOTA_devkit.git
+  
+  ```
+ 2- Make darknet.
+ 
+  ```
+  make -C ./darknet
+  
+  ```
+  3- Move to the "./Final-645" directory and unzip the images and labels of the DOTA dataset in the "./example" directory.
+  
+  ```
+  cd ./Final-645
+  mkdir example
+  mkdir ./example/labelTxt
+  unzip <PATH_TO_LABELS_ZIP_FILE> -d ./example/labelTxt
+  unzip <PATH_TO_IMAGES_ZIP_FILES> -d ./example/
+  
+  ```
+  
+ 4- Split large images (maximum size 1024*1024)
+    Convert DOTA labels format to Darknet labels format.
+
+  ```
+  python prepare_data.py
+  
+  ```
+
   ```
 .
 ├── Final-645
@@ -33,38 +66,17 @@
 │   ├── test_dota.sh
 │   └── train_dota.sh
 ├── darknet
-    ├── ...
+├── DOTA_devkit
 
   ```
 
 ## Train
-1- Download the DOTA dataset.
 
-2- Use the DOTA_devkit/ImgSplit.py to split the images and labels. (image of size 1024*1024)
+1- Create a backup directory.
   ```
-  from ImgSplit import splitbase
-  
-  split = splitbase(r'DOTA_Data', r'examplesplit', choosebestpoint=True)
-  split.splitdata(0.5)
-  
+  mkdir ./backup
   ```
-3- Copy the generated images and labels to the "examplesplit/images" and "examplesplit/labelTxt" directories.
-
-4- Convert the Label Format of DOTA to Darknet.
-  ```
-  import sys
-
-  from YOLO_Transform import dota2darknet
-
-  import dota_utils as util
-  dota2darknet('/content/examplesplit/images',
-               '/content/examplesplit/labelTxt',
-               '/content/examplesplit/labels',
-               util.wordname_15)
-  ```
-
-
-5- Modify the cfg/dota.data config file to point to your data
+2- Modify the cfg/dota.data config file to point to your data
   ```
   classes=15
   train=<PATH_TO_DIR>/examplesplit/train.txt
@@ -73,9 +85,10 @@
   backup=<PATH_TO_DIR>/backup
   
   ```
-6- List the full path of all training and test images in the "examplesplit/train.txt" and "examplesplit/test.txt" files. 
+3- List the full path of all training and test images in the "examplesplit/train.txt" and "examplesplit/test.txt" files. 
 
-7- Move to the main directory. Download the model weights pre-trained on ImageNet. Run the train.sh script.
+4- Download the model weights pre-trained on ImageNet in the same directory of "train_dota.sh".
+   Run the train.sh script.
 
   ```
   wget https://pjreddie.com/media/files/darknet19_448.conv.23
