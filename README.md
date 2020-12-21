@@ -107,6 +107,7 @@
 
 
   ```
+  mkdir ./examplesplit/results
   wget https://pjreddie.com/media/files/darknet19_448.conv.23
   sh test_dota.sh
   
